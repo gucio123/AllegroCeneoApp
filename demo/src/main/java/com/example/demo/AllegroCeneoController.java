@@ -8,7 +8,7 @@ public class AllegroCeneoController {
 
     @GetMapping
     public String hello(){
-        return "Helloooo!";
+        return "Hello!";
     }
 
 }
