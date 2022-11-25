@@ -12,7 +12,7 @@ public class FirebaseService {
     public void registerClient() throws FirebaseAuthException {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         UserRecord.CreateRequest request = new UserRecord.CreateRequest();
-        request.setEmail("bartek.gutowski@onet.pl");
+        request.setEmail("jslabyy@gmail.com");
         request.setPassword("abcdef");
         auth.createUser(request);
     }
