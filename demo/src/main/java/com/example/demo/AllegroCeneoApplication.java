@@ -10,6 +10,7 @@ public class AllegroCeneoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AllegroCeneoApplication.class, args);
+
 	}
 
 }
