@@ -1,11 +1,9 @@
 package com.example.demo;
 
 
+import Models.User;
 import com.google.firebase.auth.FirebaseAuthException;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/firebase")
@@ -22,7 +20,7 @@ public class FirebaseController {
     }
 
     @PostMapping("/add")
-    public void register() throws FirebaseAuthException {
-        firebaseService.registerClient();
+    public void register(@RequestBody User user) throws FirebaseAuthException {
+        firebaseService.registerClient(user);
     }
 }

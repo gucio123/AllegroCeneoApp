@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { User } from '../User'
+import {UseraccountserviceService} from "../useraccountservice.service";
 
 @Component({
   selector: 'app-login-register',
@@ -7,11 +8,17 @@ import { User } from '../User'
   styleUrls: ['./login-register.component.css']
 })
 export class LoginRegisterComponent implements OnInit{
+
+
   user : User = {
     email: "",
     password: ""
   };
-  constructor() { }
+  constructor(private userAccountService: UseraccountserviceService){ }
+
+  // public createAccount(): void {
+  //   this.userAccountService.createAccount(this.user);
+  // }
 
   ngOnInit(): void {
   }
