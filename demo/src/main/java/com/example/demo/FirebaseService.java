@@ -11,10 +11,10 @@ public class FirebaseService {
 
 
     public void registerClient(User user) throws FirebaseAuthException {
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        UserRecord.CreateRequest request = new UserRecord.CreateRequest();
+        FirebaseAuth auth = FirebaseAuth.getInstance(); // pobieramy instancje uslugi Authentication z aplikacji firebase
+        UserRecord.CreateRequest request = new UserRecord.CreateRequest(); // generujemy request usera, jest to tylko do dodania uzytkownika
         request.setEmail(user.getEmail());
         request.setPassword(user.getPassword());
-        auth.createUser(request);
+        auth.createUser(request); // wywołanie na instancji authentication dodania uzytkownika
     }
 }
