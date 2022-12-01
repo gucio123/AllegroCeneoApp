@@ -15,7 +15,7 @@ export class LoginRegisterComponent implements OnInit{
     password: ""
   };
 
-  constructor(private userAccountService: UseraccountserviceService){ }
+  constructor(public userAccountService: UseraccountserviceService){ }
   public createAccount(): void {
     // this.userAccountService.createAccount(this.user);  TO NIE WYSTARCZA NA POSTA
     this.userAccountService // TRZEBA TO ZROBIC TAK, CZYLI DODAC SUBSCRIBE()
