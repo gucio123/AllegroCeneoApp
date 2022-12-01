@@ -18,6 +18,8 @@ export class LoginRegisterComponent implements OnInit{
   constructor(public userAccountService: UseraccountserviceService){ }
   public createAccount(): void {
     // this.userAccountService.createAccount(this.user);  TO NIE WYSTARCZA NA POSTA
+
+    if(this.user.email.includes("@") && this.user.password.length >= 6)
     this.userAccountService // TRZEBA TO ZROBIC TAK, CZYLI DODAC SUBSCRIBE()
       .createAccount(this.user)
       .subscribe()
