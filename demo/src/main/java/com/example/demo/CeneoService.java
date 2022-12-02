@@ -41,16 +41,16 @@ public class CeneoService {
                 
                 System.out.println("LINK: " + link);
 
-                String linkImage = product.select("img").attr("data-original");
+                String linkImage1 = product.select("img").attr("data-original");
                 String linkImage2 = product.select("img").attr("src");
-                String linkImageFinal = "https:";
+                String linkImage = "https:";
 
-                if(linkImage.isEmpty()){
+                if(linkImage1.isEmpty()){
                     System.out.println("HEADER IMAGE: https:" + linkImage2);
-                    linkImageFinal += linkImage2;
+                    linkImage += linkImage2;
                 }else{
-                    System.out.println("HEADER IMAGE: https:" + linkImage);
-                    linkImageFinal += linkImage;
+                    System.out.println("HEADER IMAGE: https:" + linkImage1);
+                    linkImage += linkImage1;
                 }
 
                 String price = product.select("span.value").text() + product.select("span.penny").text();
@@ -60,7 +60,7 @@ public class CeneoService {
 
                 result[i] = new Product(title,
                         link,
-                        linkImageFinal,
+                        linkImage,
                         price);
                 System.out.println();
                 i++;
