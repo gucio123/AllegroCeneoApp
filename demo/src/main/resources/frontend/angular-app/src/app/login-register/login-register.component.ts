@@ -17,12 +17,12 @@ export class LoginRegisterComponent implements OnInit{
 
   constructor(private userAccountService: UseraccountserviceService){ }
   public createAccount(): void {
+    console.log(this.user.email);
     // this.userAccountService.createAccount(this.user);  TO NIE WYSTARCZA NA POSTA
     this.userAccountService // TRZEBA TO ZROBIC TAK, CZYLI DODAC SUBSCRIBE()
       .createAccount(this.user)
       .subscribe()
   }
-
   ngOnInit(): void {
   }
 }
