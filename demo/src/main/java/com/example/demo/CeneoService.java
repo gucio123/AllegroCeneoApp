@@ -16,7 +16,7 @@ public class CeneoService {
     public List<Product> findAllProducts(){
 
         Product[] result = new Product[10];
-        String ProductName = "durex";
+        String ProductName = "klocki lego";
         try {
             String url ="https://www.ceneo.pl/;szukaj-" + ProductName;
 

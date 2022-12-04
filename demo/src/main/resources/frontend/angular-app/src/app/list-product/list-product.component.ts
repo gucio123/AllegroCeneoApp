@@ -9,15 +9,15 @@ import { ProductserviceService } from '../productservice.service'
 })
 export class ListProductComponent implements OnInit{
 
-  // product: Product[]{
-  // };
 
   public products: Product[] = [];
 
+  public sortBy = [{id: 0, name: null},{id: 1, name: "Cena od najnizszej"}, {id: 2, name: "Cena od najwyzszej"}];
+  selectedValue = null;
   constructor(private productService: ProductserviceService) { }
 
-  ngOnInit(): void {
-    this.getProducts();
+  async ngOnInit() {
+    await this.getProducts();
     console.log(this.products);
   }
 
@@ -27,4 +27,30 @@ export class ListProductComponent implements OnInit{
         this.products = response;
         })
     }
+
+  sortmin() {
+    this.products.sort((a,b) => {
+      if(parseFloat(a.price) > parseFloat(b.price)) return 1;
+      else
+        return -1;}
+    );
+  }
+
+  sortmax() {
+    this.products.sort((a,b) => {
+      if(parseFloat(a.price) < parseFloat(b.price)) return 1;
+      else
+        return -1;}
+    );
+  }
+
+
+  onOptionsSelected(value: string) {
+    if(value == null)
+      return;
+  if(value == "Cena od najnizszej")
+    this.sortmin();
+  else if(value == "Cena od najwyzszej")
+    this.sortmax();
+  }
 }

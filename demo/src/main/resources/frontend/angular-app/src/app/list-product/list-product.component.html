@@ -22,7 +22,11 @@
                                 <th><span>Price</span></th>
                                 <th class="text-center"><span>Link</span></th>
                                 <th><span>Category</span></th>
-                                <th>&nbsp;</th>
+                                <th>&nbsp;
+                                  <select #mySelect
+                                          (change)='onOptionsSelected(mySelect.value)'>>
+                                  <option *ngFor="let c of sortBy" [ngValue]="c">{{c.name}}</option>
+                                </select></th>
                                 </tr>
                             </thead>
                             <tbody *ngFor="let product of products">
