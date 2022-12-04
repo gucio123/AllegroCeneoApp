@@ -1,12 +1,10 @@
 package com.example.demo;
 
 import Models.Product;
-import com.google.auto.value.AutoAnnotation;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -31,6 +29,7 @@ public class CeneoService {
 
 
             Elements products = document.getElementsByClass("cat-prod-row__body");
+            Elements categoryProduct = document.getElementsByClass("cat-prod-row__category");
 
             for (Element product : products) {
                 String title = product.select("a").attr("title");
@@ -56,12 +55,16 @@ public class CeneoService {
                 String price = product.select("span.value").text() + product.select("span.penny").text();
                 System.out.println("PRICE: " + price);
 
+                String category = product.select("a.link.link--accent").text();
+                System.out.println("Category: " + category);
+
 
 
                 result[i] = new Product(title,
                         link,
                         linkImage,
-                        price);
+                        price,
+                        category);
                 System.out.println();
                 i++;
                 if(i == 10)

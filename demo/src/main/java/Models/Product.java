@@ -6,12 +6,14 @@ public class Product {
     private final String price;
     private final String title;
     private final String link;
+    private final String category;
 
-    public Product(String title, String link, String linkImage, String price) {
+    public Product(String title, String link, String linkImage, String price, String category) {
         this.title = title;
         this.link = link;
         this.linkImage = linkImage;
         this.price = price;
+        this.category = category;
     }
 
     public String getTitle() {
@@ -29,6 +31,9 @@ public class Product {
     public String getLink() {
         return link;
     }
+    public String getCategory() {
+        return category;
+    }
 
     @Override
     public String toString() {
@@ -37,6 +42,7 @@ public class Product {
                 ", link='" + link + '\'' +
                 "linkImage='" + linkImage + '\'' +
                 ", price='" + price + '\'' +
+                ", category='" + category + '\'' +
                 '}';
     }
 }
