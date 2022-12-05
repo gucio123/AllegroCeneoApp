@@ -11,10 +11,9 @@ import org.springframework.mail.javamail.JavaMailSender;
 //import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-// Annotation
+
 @Service
-// Class
-// Implementing EmailService interface
+
 public class EmailServiceImpl implements EmailService {
 
     @Autowired
@@ -26,7 +25,6 @@ public class EmailServiceImpl implements EmailService {
 
     public String sendSimpleMail(EmailDetails details) {
 
-        // Try block to check for exceptions
         try {
 
             // Tworzenie maila

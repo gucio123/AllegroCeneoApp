@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-// Annotation
+
 @RestController
-// Class
+
 public class EmailController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class EmailController {
     }
 }
 
-    // Sending email with attachment
+    // email z attachmentem, ale to sie nie przyda raczej
 //    @PostMapping("/sendMailWithAttachment")
 //    public String sendMailWithAttachment(
 //            @RequestBody EmailDetails details)
