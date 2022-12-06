@@ -1,0 +1,53 @@
+<!-- <div *ngFor="let product of products">
+    <div>
+      <li>{{product.title}}</li>
+      {{product.link}}
+      {{product.linkImage}}
+      {{product.price}}
+    </div>
+</div> -->
+
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<hr>
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div  class="col-lg-12">
+            <div class="main-box no-header clearfix">
+                <div class="main-box-body clearfix">
+                    <div  class="table-responsive">
+                      <table  class="table product-list">
+                            <thead>
+                                <tr>
+                                <th><span>Product Title</span></th>
+                                <th><span>Price</span></th>
+                                <th class="text-center"><span>Link</span></th>
+                                <th><span>Category</span></th>
+                                <th>&nbsp;
+                                  <select #mySelect
+                                          (change)='onOptionsSelected(mySelect.value)'>>
+                                  <option *ngFor="let c of sortBy" [ngValue]="c">{{c.name}}</option>
+                                </select></th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let product of products">
+                                <tr>
+                                    <td>
+                                        <img src="{{product.linkImage}}" alt="">
+                                        <a class="user-link">{{product.title}}</a>
+                                    </td>
+                                    <td>{{product.price}}</td>
+                                    <td class="text-center">
+                                        <a class="label label-default" href="{{product.link}}">link</a>
+                                    </td>
+                                    <td>
+                                      <a class="label label-default" >{{product.category}}</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

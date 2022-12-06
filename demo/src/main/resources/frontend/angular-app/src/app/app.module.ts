@@ -6,11 +6,14 @@ import { AppComponent } from './app.component';
 import { LoginRegisterComponent } from './login-register/login-register.component';
 import {UseraccountserviceService} from "./useraccountservice.service";
 import {HttpClientModule} from "@angular/common/http";
+import { ListProductComponent } from './list-product/list-product.component';
+import {ProductserviceService} from "./productservice.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginRegisterComponent,
+    ListProductComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +21,7 @@ import {HttpClientModule} from "@angular/common/http";
     FormsModule,
     HttpClientModule
   ],
-  providers: [UseraccountserviceService],
+  providers: [UseraccountserviceService, ProductserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

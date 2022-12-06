@@ -8,48 +8,63 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.List;
 
 @Service
 public class CeneoService {
 
-    public Product[] products(){
+    public List<Product> findAllProducts(){
 
         Product[] result = new Product[10];
-//        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-//        System.out.println("Enter product name");
-//
-//        String ProductName = myObj.nextLine();  // Read user input
-        String ProductName = "kuchenka";
+        String ProductName = "klocki lego";
         try {
-            //Allegro: String url = (i==1) ? "https://www.ceneo.pl/;szukaj-aspiryna" : "https://allegro.pl/listing?string=aspiryna&p=" + i;
             String url ="https://www.ceneo.pl/;szukaj-" + ProductName;
 
             Document document = Jsoup.connect(url)
                     .timeout(50000)
                     .get();
+
             int i = 0;
-            Elements blogs = document.getElementsByClass("cat-prod-row__name");
-            for (Element blog : blogs) {
-//                    String titleChild = String.valueOf(blog.getAllElements());
-//                    System.out.println("TITLECHILD:" + titleChild );
+            int count = 0;
 
-//                    String NameProduct = String.valueOf(blog.getElementsMatchingText("Aspiryna"));
-//                    System.out.println("NameProduct: " + NameProduct);
 
-                String title = blog.select("a").text();
+            Elements products = document.getElementsByClass("cat-prod-row__body");
+            Elements categoryProduct = document.getElementsByClass("cat-prod-row__category");
+
+            for (Element product : products) {
+                String title = product.select("a").attr("title");
                 System.out.println("TITLE: " + title);
+                
+                String ceneoHttp = "https://www.ceneo.pl";
+                String link = ceneoHttp + product.select("a").attr("href");
+                
+                System.out.println("LINK: " + link);
 
-                String link = blog.select("a").attr("href");
-                System.out.println("LINK: https://www.ceneo.pl" + link);
+                String linkImage1 = product.select("img").attr("data-original");
+                String linkImage2 = product.select("img").attr("src");
+                String linkImage = "https:";
 
-                String headerImage = blog.getElementsByClass("cat-prod-row__foto").attr("img");
-                System.out.println("HEADER IMAGE: " + headerImage);
+                if(linkImage1.isEmpty()){
+                    System.out.println("HEADER IMAGE: https:" + linkImage2);
+                    linkImage += linkImage2;
+                }else{
+                    System.out.println("HEADER IMAGE: https:" + linkImage1);
+                    linkImage += linkImage1;
+                }
 
-//                  String authorImage = blog.select("img[src*=authors]").attr("src");
-//                  System.out.println("AUTHOR IMAGE:" + authorImage);
+                String price = product.select("span.value").text() + product.select("span.penny").text();
+                System.out.println("PRICE: " + price);
 
-                result[i] = new Product(title, link);
+                String category = product.select("a.link.link--accent").text();
+                System.out.println("Category: " + category);
+
+
+
+                result[i] = new Product(title,
+                        link,
+                        linkImage,
+                        price,
+                        category);
                 System.out.println();
                 i++;
                 if(i == 10)
@@ -58,7 +73,7 @@ public class CeneoService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return result;
+        return List.of(result);
     }
 
 }
