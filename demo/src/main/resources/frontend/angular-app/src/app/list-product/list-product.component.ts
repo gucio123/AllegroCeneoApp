@@ -8,21 +8,23 @@ import { ProductserviceService } from '../productservice.service'
   styleUrls: ['./list-product.component.css']
 })
 export class ListProductComponent implements OnInit{
+  set input(value: string) {
+    this._input = value;
+  }
 
 
   public products: Product[] = [];
-
+  private _input: string = "";
   public sortBy = [{id: 0, name: null},{id: 1, name: "Cena od najnizszej"}, {id: 2, name: "Cena od najwyzszej"}];
   selectedValue = null;
   constructor(private productService: ProductserviceService) { }
 
   async ngOnInit() {
     await this.getProducts();
-    console.log(this.products);
   }
 
   public getProducts(): void{
-    this.productService.getProducts().subscribe(
+    this.productService.getProducts(this._input).subscribe(
       (response: Product[]) => {
         this.products = response;
         })
