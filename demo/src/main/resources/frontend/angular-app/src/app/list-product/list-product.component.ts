@@ -12,9 +12,12 @@ export class ListProductComponent implements OnInit{
     this._input = value;
   }
 
+  get input(): string {
+    return this._input;
+  }
 
   public products: Product[] = [];
-  private _input: string = "";
+  private _input: string = "LEGO Star Wars 75257 Sokół Millennium,mydło w płynie";
   public sortBy = [{id: 0, name: null},{id: 1, name: "Cena od najnizszej"}, {id: 2, name: "Cena od najwyzszej"}];
   selectedValue = null;
   constructor(private productService: ProductserviceService) { }

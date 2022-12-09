@@ -1,6 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import { User } from '../User';
 import {UseraccountserviceService} from "../useraccountservice.service";
+import {ProductserviceService} from "../productservice.service";
+import {Product} from "../product";
+import {Router} from "@angular/router";
+import {ListProductComponent} from "../list-product/list-product.component";
 
 @Component({
   selector: 'app-login-register',
@@ -15,7 +19,8 @@ export class LoginRegisterComponent implements OnInit{
     password: ""
   };
 
-  constructor(private userAccountService: UseraccountserviceService){ }
+
+  constructor(private userAccountService: UseraccountserviceService, private productService: ProductserviceService, private router: Router){ }
   public createAccount(): void {
     console.log(this.user.email);
     // this.userAccountService.createAccount(this.user);  TO NIE WYSTARCZA NA POSTA
@@ -24,5 +29,9 @@ export class LoginRegisterComponent implements OnInit{
       .subscribe()
   }
   ngOnInit(): void {
+  }
+
+  getFromFile() {
+    this.router.navigateByUrl('/products');
   }
 }

@@ -13,6 +13,6 @@ export class ProductserviceService {
 
 
   public getProducts(input: string): Observable<Product[]> {
-    return this.http.post<Product[]>('http://localhost:8080/api/getproducts', "LEGO Star Wars 75257 Sokół Millennium,mydło w płynie");
+    return this.http.post<Product[]>('http://localhost:8080/api/getproducts', input);
   }
 }

@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class CeneoService {
 
-    public List<Product> findAllProducts(String input){
+    public List<Product> findProducts(String input){
 //        String input = productInput.getInput();
         List <Product> result= new ArrayList<Product>();
         String[] multipleProducts = input.split(",");
