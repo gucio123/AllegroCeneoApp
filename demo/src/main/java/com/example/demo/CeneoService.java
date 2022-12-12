@@ -97,10 +97,21 @@ public class CeneoService {
                         System.out.println("CATEGORY: " + category);
 
                     } catch (IndexOutOfBoundsException e) {
-                        e.printStackTrace();
                         category = "The category name is not avalible";
                         System.out.println(category);
                     }
+
+//                    Cena produktu w linku, wtedy lepiej bo mamy odrazu cene skojarzoną z wysyłką ale gorzej bo niektóre produkty nie mają tej strony
+//                    Element priceElement = document2.select("span.price").first();
+//
+//                    String priceText = priceElement.text();
+//
+//                    String[] priceParts = priceText.split(",");
+//
+//                    String price = priceParts[0] + priceParts[1];
+//
+//                    System.out.println(price);
+
 
 
                     Element deliveryPrices = document2.select("div.product-offer-summary__labels").first();
@@ -111,7 +122,6 @@ public class CeneoService {
                         System.out.println("Cost with delivery: " + deliveryPrice);
 
                     } catch (NullPointerException e) {
-                        e.printStackTrace();
                         deliveryPrice = "The delivery price is not avalible";
                         System.out.println(deliveryPrice);
                     }

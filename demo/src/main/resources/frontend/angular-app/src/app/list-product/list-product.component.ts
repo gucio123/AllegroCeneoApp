@@ -17,7 +17,7 @@ export class ListProductComponent implements OnInit{
   }
 
   public products: Product[] = [];
-  private _input: string = "LEGO Star Wars 75257 Sokół Millennium,mydło w płynie";
+  private _input: string = "LEGO Star Wars 75257 Sokół Millennium,mydło w płynie,pralka";
   public sortBy = [{id: 0, name: null},{id: 1, name: "Cena od najnizszej"}, {id: 2, name: "Cena od najwyzszej"}];
   selectedValue = null;
   constructor(private productService: ProductserviceService) { }
