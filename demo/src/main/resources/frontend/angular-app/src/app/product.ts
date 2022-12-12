@@ -4,4 +4,5 @@ export interface Product {
   linkImage: string,
   price: string,
   category: string
+  deliveryPrice: string
 }

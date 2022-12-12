@@ -7,13 +7,15 @@ public class Product {
     private final String title;
     private final String link;
     private final String category;
+    private final String deliveryPrice;
 
-    public Product(String title, String link, String linkImage, String price, String category) {
+    public Product(String title, String link, String linkImage, String price, String category, String deliveryPrice) {
         this.title = title;
         this.link = link;
         this.linkImage = linkImage;
         this.price = price;
-        this.category = category;
+        this.category = String.valueOf(category);
+        this.deliveryPrice = deliveryPrice;
     }
 
     public String getTitle() {
@@ -31,6 +33,11 @@ public class Product {
     public String getLink() {
         return link;
     }
+
+    public String getDeliveryPrice() {
+        return deliveryPrice;
+    }
+
     public String getCategory() {
         return category;
     }
@@ -43,6 +50,7 @@ public class Product {
                 "linkImage='" + linkImage + '\'' +
                 ", price='" + price + '\'' +
                 ", category='" + category + '\'' +
+                ", deliveryPrice='" + deliveryPrice + '\'' +
                 '}';
     }
 }
