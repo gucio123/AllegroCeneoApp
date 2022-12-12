@@ -1,24 +1,34 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
+import {HttpClient} from "@angular/common/http";
 
 
 @Component({
   selector: 'app-search',
-  templateUrl:'./search.component.html',
+  templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
-// <!--    <label for="search">Search:</label>-->
-// <!--    <input id="search" [(ngModel)]="searchTerm" type="text" placeholder="Enter search term">-->
-// <!--    <button (click)="search()">Search</button>-->
-
 })
-export class SearchComponent{
+export class SearchComponent {
   szukajnik: any;
+  results: any;
 
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private http: HttpClient) {
+  }
 
+  //nawiguj do danej strony
   search() {
-    // nawiguj do danej strony
-    this.router.navigate(['/products'], { queryParams: { search: this.szukajnik } });
+    this.router.navigate(['/products'], {queryParams: {search: this.szukajnik}});
+
+    //working on this
+
+    // this.http.get('http://localhost:4200/products', {
+    //   params: {
+    //     query: this.szukajnik
+    //   }
+    // }).subscribe(response => {
+    //   this.results = response;
+    //   this.router.navigate(['/products']);
+    // });
   }
 }

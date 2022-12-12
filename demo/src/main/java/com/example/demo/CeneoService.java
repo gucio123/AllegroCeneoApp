@@ -14,14 +14,14 @@ import java.util.List;
 @Service
 public class CeneoService {
 
-    public List<Product> findProducts(String input){
+    public List<Product> findProducts(String input) {
 //        String input = productInput.getInput();
 
-        List <Product> result= new ArrayList<Product>();
+        List<Product> result = new ArrayList<Product>();
         String[] multipleProducts = input.split(",");
 
 
-        for(int j = 0; j < multipleProducts.length; j++){
+        for (int j = 0; j < multipleProducts.length; j++) {
 
             String ProductName = multipleProducts[j];
 
@@ -116,7 +116,6 @@ public class CeneoService {
                         System.out.println(deliveryPrice);
                     }
 
-
                     Elements productsOffers = document2.getElementsByClass("page-tabs--product-page");
 
                     for (Element productOffers : productsOffers) {
@@ -127,7 +126,7 @@ public class CeneoService {
                             productOffert = productOffert.replaceAll("\\D+", "");
                             System.out.println("AMOUNT OF OFFERTS: " + productOffert);
 
-                        }catch (NullPointerException e){
+                        } catch (NullPointerException e) {
                             e.printStackTrace();
                             String productOffert = "Amount of offerts is not avalibile";
                             System.out.println(productOffert);
@@ -141,14 +140,14 @@ public class CeneoService {
                             price,
                             category,
                             deliveryPrice
-                            ));
+                    ));
 
                     System.out.println();
                     i++;
                     if (i == 10)
                         break;
                 }
-        } catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
