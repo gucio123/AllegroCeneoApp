@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { Product } from './product';
+import {SearchComponent} from "./search/search.component";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,6 @@ export class ProductserviceService {
 
 
   public getProducts(input: string): Observable<Product[]> {
-    return this.http.post<Product[]>('http://localhost:8080/api/getproducts', input);
+    return this.http.post<Product[]>('http://localhost:8080/api/getproducts', input );
   }
 }

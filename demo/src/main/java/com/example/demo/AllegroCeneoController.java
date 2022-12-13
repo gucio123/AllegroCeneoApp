@@ -27,6 +27,7 @@ public class AllegroCeneoController {
         List<Product> products = ceneoService.findProducts(input);
         return new ResponseEntity<>(products, HttpStatus.OK);
 
+
     }
 
 
