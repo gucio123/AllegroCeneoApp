@@ -19,7 +19,7 @@ public class EmailServiceImpl implements EmailService {
     @Autowired
     private JavaMailSender javaMailSender;
 
-    @Value("${spring.mail.username}")
+    @Value("firebase9yz23@gmail.com")
     private String sender;
 
 

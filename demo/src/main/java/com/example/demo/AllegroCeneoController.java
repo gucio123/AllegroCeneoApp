@@ -18,13 +18,16 @@ public class AllegroCeneoController {
     }
 
     @GetMapping
-    public String hello(){
+    public String hello() {
         return "Main page for now";
     }
 
     @PostMapping("/getproducts")
-    public ResponseEntity<List<Product>> getfindAllProducts(@RequestBody String input){
-        List<Product> products = ceneoService.findAllProducts(input);
+    public ResponseEntity<List<Product>> getfindAllProducts(@RequestBody String input) {
+        List<Product> products = ceneoService.findProducts(input);
         return new ResponseEntity<>(products, HttpStatus.OK);
+
     }
+
+
 }
