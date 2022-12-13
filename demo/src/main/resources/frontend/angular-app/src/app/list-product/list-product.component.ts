@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductserviceService } from '../productservice.service'
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-list-product',
@@ -8,21 +9,26 @@ import { ProductserviceService } from '../productservice.service'
   styleUrls: ['./list-product.component.css']
 })
 export class ListProductComponent implements OnInit{
-  set input(value: string) {
-    this._input = value;
-  }
-
-  get input(): string {
-    return this._input;
-  }
+  // set input(value: string) {
+  //   this._input = value;
+  // }
+  //
+  // get input(): string | null{
+  //   return this._input;
+  // }
 
   public products: Product[] = [];
-  private _input: string = "LEGO Star Wars 75257 Sokół Millennium,mydło w płynie,pralka";
+  private _input: string = "";
   public sortBy = [{id: 0, name: null},{id: 1, name: "Cena od najnizszej"}, {id: 2, name: "Cena od najwyzszej"}];
   selectedValue = null;
-  constructor(private productService: ProductserviceService) { }
+  constructor(private productService: ProductserviceService, private activatedRoute: ActivatedRoute) {  this.activatedRoute.queryParams.subscribe(params => {
+    this._input = params['search'];
+    console.log(this._input); // Print the parameter to the console.
+  }); }
 
   async ngOnInit() {
+    // this._input = <string>this.activatedRoute.snapshot.paramMap.get('search');
+    console.log(this._input);
     await this.getProducts();
   }
 
