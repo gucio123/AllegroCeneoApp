@@ -23,6 +23,8 @@
                                 <th class="text-center"><span>Link</span></th>
                                 <th><span>Category</span></th>
                                   <th><span>Price with delivery</span></th>
+                                  <th><span>Amount of offerts</span></th>
+
                                 <th>&nbsp;
                                   <select #mySelect
                                           (change)='onOptionsSelected(mySelect.value)'>>
@@ -45,6 +47,9 @@
                                     </td>
                                   <td>
                                     <a>{{product.deliveryPrice}}</a>
+                                  </td>
+                                  <td>
+                                    <a>{{product.productOffert}}</a>
                                   </td>
 
                                 </tr>

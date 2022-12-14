@@ -5,4 +5,5 @@ export interface Product {
   price: string,
   category: string
   deliveryPrice: string
+  productOffert: string;
 }

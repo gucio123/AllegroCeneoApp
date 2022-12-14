@@ -126,22 +126,24 @@ public class CeneoService {
                         System.out.println(deliveryPrice);
                     }
 
-                    Elements productsOffers = document2.getElementsByClass("page-tabs--product-page");
 
-                    for (Element productOffers : productsOffers) {
+                    Elements productsOfferts = document2.getElementsByClass("page-tabs--product-page");
 
-                        try {
+                    String productOffert = null;
 
-                            String productOffert = productOffers.select("a").attr("title");
-                            productOffert = productOffert.replaceAll("\\D+", "");
-                            System.out.println("AMOUNT OF OFFERTS: " + productOffert);
+                    try {
 
-                        } catch (NullPointerException e) {
-                            e.printStackTrace();
-                            String productOffert = "Amount of offerts is not avalibile";
-                            System.out.println(productOffert);
-                        }
+                        productOffert = productsOfferts.select("a").attr("title");
+                        productOffert = productOffert.replaceAll("\\D+", "");
+                        System.out.println("AMOUNT OF OFFERTS: " + productOffert);
 
+                    } catch (NullPointerException e) {
+                        e.printStackTrace();
+                        productOffert = "Amount of offerts is not avalibile";
+                        System.out.println(productOffert);
+                    }
+                    if(productOffert.isEmpty()){
+                        productOffert = "Amount of offerts is not avalibile";
                     }
 
                     result.add(new Product(title,
@@ -149,7 +151,8 @@ public class CeneoService {
                             linkImage,
                             price,
                             category,
-                            deliveryPrice
+                            deliveryPrice,
+                            productOffert
                     ));
 
                     System.out.println();
