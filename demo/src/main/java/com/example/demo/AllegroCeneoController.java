@@ -25,6 +25,7 @@ public class AllegroCeneoController {
     @PostMapping("/getproducts")
     public ResponseEntity<List<Product>> getfindAllProducts(@RequestBody String input) {
         List<Product> products = ceneoService.findProducts(input);
+
         return new ResponseEntity<>(products, HttpStatus.OK);
 
 
