@@ -1,5 +1,11 @@
 <main>
   <input id="search" [(ngModel)]="szukajnik" type="text" placeholder="Czego potrzebujesz?">
   <button (click)="search()">Szukaj</button>
+  <div class="form-group">
+    <label for="file">Choose File</label>
+    <input type="file" id="file" (change)="$event.target">
+<!--    <input type="file" class="file-upload" id="file" (change)="handleFileInput($event.target.files)">-->
+    <button (click)="search()">Szukaj z pliku</button>
+  </div>
 </main>
 

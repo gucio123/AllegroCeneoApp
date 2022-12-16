@@ -31,7 +31,4 @@ export class LoginRegisterComponent implements OnInit{
   ngOnInit(): void {
   }
 
-  getFromFile() {
-    this.router.navigateByUrl('/products');
-  }
 }
