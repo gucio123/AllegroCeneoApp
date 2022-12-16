@@ -20,6 +20,8 @@ public class CeneoService {
         List<Product> result = new ArrayList<Product>();
         String[] multipleProducts = input.split(",");
 
+        long startTime = System.currentTimeMillis();
+
 
         for (int j = 0; j < multipleProducts.length; j++) {
 
@@ -27,7 +29,7 @@ public class CeneoService {
 
             try {
 
-                String url = "https://www.ceneo.pl/;szukaj-" + ProductName;
+                String url = "https://www.ceneo.pl/;szukaj-" + ProductName + ";0112-0.htm";
 
                 Document document = Jsoup.connect(url)
                         .timeout(50000)
@@ -146,19 +148,25 @@ public class CeneoService {
                         productOffert = "Amount of offerts is not avalibile";
                     }
 
-                    result.add(new Product(title,
-                            link,
-                            linkImage,
-                            price,
-                            category,
-                            deliveryPrice,
-                            productOffert
-                    ));
 
-                    System.out.println();
-                    i++;
-                    if (i == 10)
+
+                    if (category.equalsIgnoreCase("uroda") || category.equalsIgnoreCase("zdrowie")) {
+                        result.add(new Product(title,
+                                link,
+                                linkImage,
+                                price,
+                                category,
+                                deliveryPrice,
+                                productOffert
+                        ));
+                        i++;
+                    }
+
+                    long estimetedTime = System.currentTimeMillis() - startTime;
+
+                    if ((i == 10)|| (estimetedTime >= 30000)){
                         break;
+                    }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
