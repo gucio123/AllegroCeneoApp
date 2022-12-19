@@ -9,13 +9,15 @@ import {HttpClientModule} from "@angular/common/http";
 import { ListProductComponent } from './list-product/list-product.component';
 import {ProductserviceService} from "./productservice.service";
 import {SearchComponent} from "./search/search.component";
+import {BinComponent} from "./bin/bin.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginRegisterComponent,
     ListProductComponent,
-    SearchComponent
+    SearchComponent,
+    BinComponent
   ],
   imports: [
     BrowserModule,

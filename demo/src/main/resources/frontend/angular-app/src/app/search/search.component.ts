@@ -15,30 +15,22 @@ export class SearchComponent {
 
   constructor(private router: Router, private http: HttpClient) {
   }
+
   fileContent: string | ArrayBuffer | null = '';
 
   public onChange(fileList: FileList): void {
     let file = fileList[0];
     let fileReader: FileReader = new FileReader();
     let self = this;
-    fileReader.onloadend = function(x) {
+    fileReader.onloadend = function (x) {
       self.fileContent = fileReader.result;
     }
     fileReader.readAsText(file);
   }
+
   //nawiguj do danej strony
   search() {
     this.router.navigate(['/products'], {queryParams: {search: this.szukajnik}});
 
-    //working on this
-
-    // this.http.get('http://localhost:4200/products', {
-    //   params: {
-    //     query: this.szukajnik
-    //   }
-    // }).subscribe(response => {
-    //   this.results = response;
-    //   this.router.navigate(['/products']);
-    // });
   }
 }
