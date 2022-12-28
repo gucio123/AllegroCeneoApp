@@ -19,8 +19,32 @@ export class ListProductComponent implements OnInit{
 
   public products: Product[] = [];
   private _input: string = "";
+  currentSortPrice: 'min' | 'max' = 'min';
+  currentSortOffert: 'min' | 'max' = 'min';
+
+  toggleSortPrice(): void {
+    if (this.currentSortPrice === 'min') {
+      this.sortminPrice();
+      this.currentSortPrice = 'max';
+    } else {
+      this.sortmaxPrice();
+      this.currentSortPrice = 'min';
+    }
+  }
+
+  toggleSortOffert(): void {
+    if (this.currentSortOffert === 'min') {
+      this.sortminOffert();
+      this.currentSortOffert = 'max';
+    } else {
+      this.sortmaxOffert();
+      this.currentSortOffert = 'min';
+    }
+  }
   public sortBy = [{id: 0, name: null},{id: 1, name: "Cena od najnizszej"}, {id: 2, name: "Cena od najwyzszej"}];
   selectedValue = null;
+
+
   constructor(private productService: ProductserviceService, private activatedRoute: ActivatedRoute) {  this.activatedRoute.queryParams.subscribe(params => {
     this._input = params['search'];
     console.log(this._input); // Print the parameter to the console.
@@ -39,29 +63,53 @@ export class ListProductComponent implements OnInit{
         })
     }
 
-  sortmin() {
+  sortminPrice() {
     this.products.sort((a,b) => {
-      if(parseFloat(a.price) > parseFloat(b.price)) return 1;
+      let priceA = parseFloat(a.price.replace(',', ''));
+      let priceB = parseFloat(b.price.replace(',', ''));
+      if(priceA > priceB) return 1;
       else
         return -1;}
     );
   }
 
-  sortmax() {
+  sortmaxPrice() {
     this.products.sort((a,b) => {
-      if(parseFloat(a.price) < parseFloat(b.price)) return 1;
+      let priceA = parseFloat(a.price.replace(',', ''));
+      let priceB = parseFloat(b.price.replace(',', ''));
+      if(priceA < priceB) return 1;
+      else
+        return -1;}
+    );
+  }
+  sortminOffert() {
+    this.products.sort((a,b) => {
+      let priceA = parseFloat(a.productOffert.replace(',', ''));
+      let priceB = parseFloat(b.productOffert.replace(',', ''));
+      if(priceA > priceB) return 1;
+      else
+        return -1;}
+    );
+  }
+
+  sortmaxOffert() {
+    this.products.sort((a,b) => {
+      let priceA = parseFloat(a.productOffert.replace(',', ''));
+      let priceB = parseFloat(b.productOffert.replace(',', ''));
+      if(priceA < priceB) return 1;
       else
         return -1;}
     );
   }
 
 
-  onOptionsSelected(value: string) {
-    if(value == null)
-      return;
-  if(value == "Cena od najnizszej")
-    this.sortmin();
-  else if(value == "Cena od najwyzszej")
-    this.sortmax();
-  }
+
+  // onOptionsSelected(value: string) {
+  //   if(value == null)
+  //     return;
+  // if(value == "Cena od najnizszej")
+  //   this.sortminPrice();
+  // else if(value == "Cena od najwyzszej")
+  //   this.sortmaxPrice();
+  // }
 }

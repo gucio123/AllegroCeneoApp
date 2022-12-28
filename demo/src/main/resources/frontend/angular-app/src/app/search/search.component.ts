@@ -27,6 +27,7 @@ export class SearchComponent {
     fileReader.readAsText(file);
   }
   //nawiguj do danej strony
+  condition: any;
   search() {
     this.router.navigate(['/products'], {queryParams: {search: this.szukajnik}});
 
