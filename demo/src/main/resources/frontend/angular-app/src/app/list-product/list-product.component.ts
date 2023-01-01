@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductserviceService } from '../productservice.service'
 import {ActivatedRoute} from "@angular/router";
+import {CartList} from "../CartList";
 
 @Component({
   selector: 'app-list-product',
@@ -16,7 +17,7 @@ export class ListProductComponent implements OnInit{
   // get input(): string | null{
   //   return this._input;
   // }
-
+  cartList = CartList;
   public products: Product[] = [];
   private _input: string = "";
   currentSortPrice: 'min' | 'max' = 'min';
@@ -101,7 +102,9 @@ export class ListProductComponent implements OnInit{
         return -1;}
     );
   }
-
+  addProductToCart(product : Product){
+    this.cartList.push(product);
+  };
 
 
   // onOptionsSelected(value: string) {
