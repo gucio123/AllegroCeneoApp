@@ -1,77 +1,6 @@
-<!-- <div *ngFor="let product of products">
-    <div>
-      <li>{{product.title}}</li>
-      {{product.link}}
-      {{product.linkImage}}
-      {{product.price}}
-    </div>
-</div> -->
-
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 <hr>
 <div class="container bootstrap snippets bootdey">
-<!--    <div class="row">-->
-<!--        <div  class="col-lg-9 col-md-9 col-sm-12">-->
-<!--            <div class="col-lg-12 col-sm-12">-->
-<!--              <span class="title">Lista produtków</span>-->
-<!--            </div>-->
-<!--            <div class></div>-->
-<!--                <div class="main-box-body clearfix">-->
-<!--                    <div  class="table-responsive">-->
-<!--                      <table  class="table product-list">-->
-<!--                            <thead>-->
-<!--                                <tr>-->
-<!--                                <th><span>Product Title</span></th>-->
-<!--                                <th><span>Price</span></th>-->
-<!--                                <th><span>Link</span></th>-->
-<!--                                <th><span>Category</span></th>-->
-<!--                                  <th><span>Price with delivery</span></th>-->
-<!--                                  <th><span>Amount of offerts</span></th>-->
-
-<!--                                <th>&nbsp;-->
-<!--                                  <select #mySelect-->
-<!--                                          (change)='onOptionsSelected(mySelect.value)'>>-->
-<!--                                  <option *ngFor="let c of sortBy" [ngValue]="c">{{c.name}}</option>-->
-<!--                                </select>-->
-<!--                                </th>-->
-<!--                                </tr>-->
-<!--                            </thead>-->
-<!--                            <tbody *ngFor="let product of products">-->
-<!--                                <tr>-->
-<!--                                    <td>-->
-<!--                                        <img src="{{product.linkImage}}" alt="">-->
-<!--                                        <a class="user-link">{{product.title}}</a>-->
-<!--                                    </td>-->
-<!--                                    <td>{{product.price}}</td>-->
-<!--                                    <td class="text-center">-->
-<!--                                        <a class="label label-default" href="{{product.link}}">link</a>-->
-<!--                                    </td>-->
-<!--                                    <td>-->
-<!--                                      <a >{{product.category}}</a>-->
-<!--                                    </td>-->
-<!--                                  <td>-->
-<!--                                    <a>{{product.deliveryPrice}}</a>-->
-<!--                                  </td>-->
-<!--                                  <td>-->
-<!--                                    <a>{{product.productOffert}}</a>-->
-<!--                                  </td>-->
-
-<!--                                </tr>-->
-<!--                            </tbody>-->
-<!--                        </table>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
-
-
-<!--///////////////////////////////////////second html/-->
-
-
-
 <div class="col-lg-9 col-md-9 col-sm-12">
   <div class="col-lg-12 col-sm-12">
     <span class="title">List of Products</span>
@@ -99,50 +28,52 @@
           <th>Koszyk</th>
         </tr>
         </thead>
-        <tbody *ngFor="let product of products">
-          <div *ngIf="products.length === 0">
-            <p> There are no products to display. NIE DZIAŁA :(</p>
-          </div>
-            <tr class="md-table-headers">
-              <td class="hidden-xs">
-                <a href="{{product.linkImage}}">
-                  <img src="{{product.linkImage}}" width="60" height="60" alt="Product image!">
-                </a>
-              </td>
-              <td><a>{{product.title}}</a>
-              </td>
-              <td>
-                <a> {{product.category}}</a>
-              </td>
-              <td>
-                <a [href]="product.link"> Przejdź do strony Ceneo</a>
-              </td>
-              <td>
-                <a> {{product.productOffert}}</a>
-              </td>
-              <td>
-                <div class="input-group bootstrap-touchspin">
-                  <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span>
-                  <input type="text" name="" value="1" class="input-qty form-control text-center" style="display: block;">
-                  <span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
-                </div>
-              </td>
-              <td class="price">{{product.price}}</td>
-              <td></td>
-              <td class="text-center">
-                <a>
-                  <button (click)="addProductToCart(product)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                      <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                    </svg>
-                  </button>
-                </a>
-              </td>
-              </tr>
-        </tbody>
+        <div *ngIf="products.length === 0; else productList">
+          <div class="erorr-message"> There are no products to display. Please wait or change the searching product</div>
+
+        </div>
+        <ng-template #productList>
+          <tbody *ngFor="let product of products">
+              <tr class="md-table-headers">
+                <td class="hidden-xs">
+                  <a href="{{product.linkImage}}">
+                    <img src="{{product.linkImage}}" width="60" height="60" alt="Product image!">
+                  </a>
+                </td>
+                <td><a>{{product.title}}</a>
+                </td>
+                <td>
+                  <a> {{product.category}}</a>
+                </td>
+                <td>
+                  <a [href]="product.link"> Przejdź do strony Ceneo</a>
+                </td>
+                <td>
+                  <a> {{product.productOffert}}</a>
+                </td>
+                <td>
+                  <div class="input-group bootstrap-touchspin">
+                    <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span>
+                    <input type="text" name="" value="1" class="input-qty form-control text-center" style="display: block;">
+                    <span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
+                  </div>
+                </td>
+                <td class="price">{{product.price}}</td>
+                <td></td>
+                <td class="text-center">
+                  <a>
+                    <button (click)="addProductToCart(product)">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                      </svg>
+                    </button>
+                  </a>
+                </td>
+                </tr>
+          </tbody>
+        </ng-template>
         </table>
       </div>
     </div>
   </div>
 </div>
-<!-- End Cart -->

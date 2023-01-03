@@ -171,3 +171,12 @@ md-input-container.md-default-theme .md-input {
   background-clip: text;
   -webkit-background-clip: text;
 }
+
+.erorr-message{
+  background-color: #f44336;
+  color: white;
+  padding: 16px;
+  border-radius: 16px;
+  font-size: 24px;
+
+}

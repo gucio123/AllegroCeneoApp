@@ -4,6 +4,7 @@ import { ProductserviceService } from '../productservice.service'
 import {ActivatedRoute} from "@angular/router";
 import {CartList} from "../CartList";
 
+
 @Component({
   selector: 'app-list-product',
   templateUrl: './list-product.component.html',
@@ -46,7 +47,7 @@ export class ListProductComponent implements OnInit{
   selectedValue = null;
 
 
-  constructor(private productService: ProductserviceService, private activatedRoute: ActivatedRoute) {  this.activatedRoute.queryParams.subscribe(params => {
+  constructor(private productService: ProductserviceService, private activatedRoute: ActivatedRoute ) {  this.activatedRoute.queryParams.subscribe(params => {
     this._input = params['search'];
     console.log(this._input); // Print the parameter to the console.
   }); }

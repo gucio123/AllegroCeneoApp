@@ -17,7 +17,7 @@ export class AppComponent {
     this.router.navigateByUrl('/products');
   }
   goToLoginRegister() {
-    this.router.navigateByUrl('/loginRegister');
+    this.router.navigateByUrl('/register');
   }
 
 }
