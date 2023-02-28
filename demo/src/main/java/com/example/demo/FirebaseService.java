@@ -30,7 +30,7 @@ import javax.mail.internet.MimeMessage;
 public class FirebaseService {
 
     @Autowired
-    private JavaMailSender javaMailSender;
+    private JavaMailSender javaMailSendder;
 
     private FirebaseAuth firebaseAuth;
 
