@@ -54,13 +54,12 @@ public class FirebaseService {
     }
 
 
-    // PONIZEJ JAKIES INNE PODEJSCIE KTORE TEZ NIE DZIALAXD
 
     //    public FirebaseService() throws IOException {
-//        FileInputStream serviceAccount = new FileInputStream("demo/src/main/resources/serviceAccountKey.json");
+//        FileInputStream serviceAccount = new FileInputStream("demo/src/main/resources/...");
 //
 //        FirebaseOptions options = new FirebaseOptions.Builder()
-//                .setCredentials(GoogleCredentials.fromStream(serviceAccount)).setDatabaseUrl("https://allegroceneo-2ac4f.firebaseio.com").build();
+//                .setCredentials(GoogleCredentials.fromStream(serviceAccount)).setDatabaseUrl("...").build();
 //
 //        FirebaseApp.initializeApp(options);
 //        firebaseAuth = FirebaseAuth.getInstance();
