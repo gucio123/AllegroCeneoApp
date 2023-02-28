@@ -36,7 +36,7 @@ public class FirebaseService {
 
 
     @Value("firebase9yz23@gmail.com")
-    private String sender;
+    private String senders;
 
     public void registerClient(User user) throws FirebaseAuthException {
         FirebaseAuth auth = FirebaseAuth.getInstance(); // pobieramy instancje uslugi Authentication z aplikacji firebase
